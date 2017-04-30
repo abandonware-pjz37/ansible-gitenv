@@ -1,0 +1,18 @@
+galaxy_info:
+  author: Ruslan Baratov
+  description: Install https://github.com/ruslo/gitenv and configs on remote
+  issue_tracker_url: https://github.com/ansible-stuff/gitenv/issues
+
+  license: BSD
+
+  min_ansible_version: 1.2
+
+  github_branch: master
+
+  - name: Ubuntu
+    versions:
+    - all
+
+  galaxy_tags: []
+
+dependencies: []
