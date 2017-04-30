@@ -56,7 +56,7 @@ Create ``requirements.txt`` file with content:
 
 .. code-block:: none
 
-  ansible-stuff.gitenv
+  ansible-stuff.gitenv,v1.0
 
 Add custom path for externally downloaded roles to ``ansible.cfg``:
 
