@@ -1,0 +1,2 @@
+[gitenv]
+my-machine.example.com:12345 ansible_user=remote-username
