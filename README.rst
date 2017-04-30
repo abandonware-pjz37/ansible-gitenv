@@ -44,7 +44,7 @@ Run playbook:
 
 .. code-block:: none
 
-  [gitenv]> ansible-playbook --inventory-file hosts gitenv.yml --ask-become-pass
+  [gitenv]> ansible-playbook --inventory-file hosts gitenv.yml
 
 Integrate Playbook
 ------------------
@@ -85,13 +85,13 @@ And inventory example ``hosts``:
 .. code-block:: none
 
   [gitenv]
-  my-machine.example.com:12345 ansible_user=remote-username
+  my-machine.example.com:12345 ansible_user=remote-username ansible_become_pass=my-secret-password
 
 Run playbook:
 
 .. code-block:: none
 
-  > ansible-playbook --inventory-file hosts gitenv.yml --ask-become-pass
+  > ansible-playbook --inventory-file hosts gitenv.yml
 
 License
 -------

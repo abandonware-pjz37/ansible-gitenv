@@ -1,2 +1,2 @@
 [gitenv]
-my-machine.example.com:12345 ansible_user=remote-username
+my-machine.example.com:12345 ansible_user=remote-username ansible_become_pass=my-secret-password
