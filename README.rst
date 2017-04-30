@@ -4,6 +4,10 @@ GitEnv
 Ansible role for installing `GitEnv <https://github.com/ruslo/gitenv>`__
 and configs.
 
+WARNING: This script is **destructive** and overwrite some
+`dot-config <https://github.com/ruslo/configs/blob/92d879131cc0879766b35c85140dbd9d531fd29a/setup.py#L140-L151>`__
+files!
+
 Role Variables
 --------------
 
@@ -11,6 +15,7 @@ Role Variables
 Name               Description                    Default
 ================== ============================== =================
 gitenv_working_dir Directory to clone 'gitenv' to $HOME/work/gitenv
+gitenv_check_zsh   Check that SHELL is ZSH        true
 ================== ============================== =================
 
 Example Playbook

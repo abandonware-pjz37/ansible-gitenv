@@ -1,3 +1,4 @@
 ---
 
 gitenv_working_dir: "{{ ansible_env.HOME }}/work/gitenv"
+gitenv_check_zsh: true

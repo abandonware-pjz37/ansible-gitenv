@@ -57,5 +57,5 @@
 # How to automate installation of ZSH?
 - assert:
     that:
-      ansible_env.SHELL == "/bin/zsh"
+      (ansible_env.SHELL == "/bin/zsh") or (gitenv_check_zsh == false)
     msg: "Please login to remote and run 'chsh -s /bin/zsh'. Then restart remote and run this playbook again."

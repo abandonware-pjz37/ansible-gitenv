@@ -1,4 +1,4 @@
 ---
 - hosts: gitenv
   roles:
-    - gitenv
+    - role: gitenv
