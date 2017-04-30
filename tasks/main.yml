@@ -1,0 +1,60 @@
+---
+
+- name: Install tools
+  apt:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+    cache_valid_time: 3600
+    autoremove: yes
+  with_items:
+    - git
+    - python3
+    - zsh
+  become: yes
+  become_user: root
+
+- name: Clone 'gitenv'
+  git:
+    repo: https://github.com/ruslo/gitenv
+    dest: "{{ gitenv_working_dir }}"
+    recursive: no
+    force: yes
+
+- name: Initialize submodules
+  command: git submodule update --init "{{ item }}"
+  args:
+    chdir: "{{ gitenv_working_dir }}"
+  with_items:
+    - configs
+    - oh-my-zsh
+
+- name: Switch to master
+  command: git checkout master
+  args:
+    chdir: "{{ gitenv_working_dir }}/{{ item }}"
+  with_items:
+    - configs
+    - oh-my-zsh
+
+- name: Pull latest
+  command: git checkout master
+  args:
+    chdir: "{{ gitenv_working_dir }}/{{ item }}"
+  with_items:
+    - configs
+    - oh-my-zsh
+
+- name: Setup configs
+  command: python3 ./configs/setup.py --gitenv-root "{{ gitenv_working_dir }}" --force
+  args:
+    chdir: "{{ gitenv_working_dir }}"
+
+- debug:
+    msg: "Current SHELL is '{{ ansible_env.SHELL }}'"
+
+# How to automate installation of ZSH?
+- assert:
+    that:
+      ansible_env.SHELL == "/bin/zsh"
+    msg: "Please login to remote and run 'chsh -s /bin/zsh'. Then restart remote and run this playbook again."
